@@ -138,7 +138,6 @@ one_shot = true
 [connection signal="timeout" from="JumpGracetime" to="." method="_on_JumpGracetime_timeout"]
 [connection signal="timeout" from="MidJump" to="." method="_on_MidJump_timeout"]
 [connection signal="timeout" from="LongJump" to="." method="_on_LongJump_timeout"]
-[connection signal="timeout" from="Stunned" to="." method="_on_Stunned_timeout"]
 [connection signal="area_shape_entered" from="Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
