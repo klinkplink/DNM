@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Pain.ogg-6b50de3d0c5f1ca7e56f6e86f68d0c99.oggstr"
+
+[deps]
+
+source_file="res://Art/Pain.ogg"
+dest_files=[ "res://.import/Pain.ogg-6b50de3d0c5f1ca7e56f6e86f68d0c99.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

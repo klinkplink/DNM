@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player/PlayerBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Terrain/TripleWide.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SceneCam.gd" type="Script" id=3]
+[ext_resource path="res://Terrain/Platform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Bingus_Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Smarguspmuf_Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Terrain/DoorNode.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Level2.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8000, 10 )
+
+[node name="Level1" type="Node"]
+
+[node name="DoorNode" parent="." instance=ExtResource( 8 )]
+position = Vector2( 808, 360 )
+NextLevel = ExtResource( 9 )
+
+[node name="DEATHPLANE" type="Area2D" parent="."]
+position = Vector2( 392, 630 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DEATHPLANE"]
+position = Vector2( -464, 107 )
+shape = SubResource( 1 )
+
+[node name="PlayerBody" parent="." instance=ExtResource( 1 )]
+position = Vector2( 483, 404 )
+
+[node name="SceneCam" type="Camera2D" parent="PlayerBody"]
+position = Vector2( 0, 7.62939e-06 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.25
+drag_margin_top = 0.5
+drag_margin_right = 0.25
+drag_margin_bottom = 0.3
+script = ExtResource( 3 )
+
+[node name="Floors" type="Node" parent="."]
+
+[node name="TripleWide" parent="Floors" instance=ExtResource( 2 )]
+position = Vector2( 488, 512 )
+
+[node name="TripleWide3" parent="Floors" instance=ExtResource( 2 )]
+position = Vector2( 648, 512 )
+
+[node name="TripleWide2" parent="Floors" instance=ExtResource( 2 )]
+position = Vector2( 328, 512 )
+
+[node name="Platform" parent="Floors" instance=ExtResource( 4 )]
+position = Vector2( 624, 288 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Smargus" parent="." instance=ExtResource( 6 )]
+position = Vector2( 336, 184 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Bingus_Enemy2" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 624, 232 )
+
+[connection signal="body_entered" from="DEATHPLANE" to="PlayerBody" method="_on_DEATHPLANE_body_entered"]

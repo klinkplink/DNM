@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pain_numba_1.ogg-98e0f3c035f7928eca9543f6fad068fe.oggstr"
+
+[deps]
+
+source_file="res://Art/pain_numba_1.ogg"
+dest_files=[ "res://.import/pain_numba_1.ogg-98e0f3c035f7928eca9543f6fad068fe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

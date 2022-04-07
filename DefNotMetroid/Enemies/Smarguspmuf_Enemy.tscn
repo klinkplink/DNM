@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Art/colored.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/SmargPath.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/Smarguspmuf_Enemy.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.6667, 5, 0, 0, 0, 0, 23, 10.3333, 0, 0, 0, 0, 26.3333, 17.6667, 0, 0, 0, 0, 27.3333, 26.6667, 0, 0, 0, 0, 26.3333, 36.6667, 0, 0, 0, 0, 23.3333, 42.6667, 0, 0, 0, 0, 17, 48.6667, 0, 0, 0, 0, 9.33333, 52.3333, 0, 0, 0, 0, -0.333333, 54.6667, 0, 0, 0, 0, -9, 52.3333, 0, 0, 0, 0, -16.3333, 49, 0, 0, 0, 0, -22, 44, 0, 0, 0, 0, -25.3333, 36.3333, 0, 0, 0, 0, -27, 27.3333, 0, 0, 0, 0, -25.6667, 17.6667, 0, 0, 0, 0, -20.6667, 10.3333, 0, 0, 0, 0, -15, 6, 0, 0, 0, 0, -9, 2.66667, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Smargus" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+scale = Vector2( 3, 3 )
+curve = SubResource( 2 )
+
+[node name="SmargPath" type="PathFollow2D" parent="Path2D"]
+rotation = 0.291457
+rotate = false
+script = ExtResource( 2 )
+
+[node name="Smarguspmuf_Enemy" type="Area2D" parent="Path2D/SmargPath"]
+rotation = -0.291457
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/SmargPath/Smarguspmuf_Enemy"]
+visible = false
+position = Vector2( 0.000390427, 9.00985e-05 )
+rotation = -1.49012e-08
+shape = SubResource( 1 )
+
+[node name="SmarguspmufSprite" type="Sprite" parent="Path2D/SmargPath/Smarguspmuf_Enemy"]
+position = Vector2( 0.000390427, 9.00985e-05 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 442, 136, 16, 16 )

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Terrain/TripleWide.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/tileset_legacy.png" type="Texture" id=2]
+[ext_resource path="res://Terrain/DoorBody.gd" type="Script" id=3]
+[ext_resource path="res://Terrain/DoorNode.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.94631, 8.05263 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 151 )
+
+[node name="DoorNode" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="DoorBody" type="StaticBody2D" parent="."]
+scale = Vector2( 9.3125, 9.5 )
+collision_layer = 10
+collision_mask = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="OpenSprite" type="Sprite" parent="DoorBody"]
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 136, 170, 16, 16 )
+
+[node name="ClosedSprite" type="Sprite" parent="DoorBody"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 119, 170, 16, 16 )
+
+[node name="DoorCollisionPlayer" type="CollisionShape2D" parent="DoorBody"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="CloseTimer" type="Timer" parent="DoorBody"]
+one_shot = true
+
+[node name="LevelLoader" type="Area2D" parent="."]
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLoader"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="TripleWide" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -152 )
+
+[node name="TripleWide2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 152 )
+
+[connection signal="timeout" from="DoorBody/CloseTimer" to="DoorBody" method="_on_CloseTimer_timeout"]
+[connection signal="body_entered" from="LevelLoader" to="." method="_on_LevelLoader_body_entered"]
